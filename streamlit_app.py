@@ -7,9 +7,10 @@ model = load('linear_regression_model.joblib')
 
 # Create a simple user input
 user_input = st.number_input('Enter house size:', min_value=100, max_value=10000, step=50)
+user_input_2 = st.number_input('Enter num_bedrooms:', min_value=1, max_value=10, step=1)
 
-# Reshape the input for the model
-input_array = np.array([user_input]).reshape(-1, 1)
+# Combine inputs into a single 2D array [[house_size, num_bedrooms]]
+input_array = np.array([[user_input, user_input_2]])
 
 # Predict the house price
 if st.button('Predict Price'):
